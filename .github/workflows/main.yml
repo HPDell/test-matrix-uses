@@ -11,5 +11,5 @@ jobs:
         uses: actions/checkout@v3
       - name: Test
         run: |
-          chmod +x /code/test.sh
+          chmod +x ./test.sh
           docker run --rm -v $(pwd):/code --workdir=/code ${{ matrix.image }}:latest /bin/bash -c "/code/test.sh"
