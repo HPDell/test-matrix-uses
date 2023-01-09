@@ -11,5 +11,4 @@ jobs:
         uses: actions/checkout@v3
       - name: Test
         run: |
-          docker run --rm -v $(pwd):/code --workdir=/code ${{ matrix.image }}:latest \
-            --entrypoint /bin/bash ./test.sh
+          docker run --rm -v $(pwd):/code --workdir=/code ${{ matrix.image }}:latest ./test.sh
