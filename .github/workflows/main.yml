@@ -1,8 +1,5 @@
 name: Main Workflow
-
 on: [push]
-
-
 jobs:
   test_linux:
     runs-on: ubuntu-latest
@@ -13,7 +10,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Test
-        uses: docker://${{ matrix.image }}:latest
-        with:
-          entrypoint: /bin/bash
-          args: ./test.sh
+        run: |
+          docker run --rm -v $(pwd):/code --workdir=/code ${{ matrix.image }}:latest \
+            --entrypoint /bin/bash ./test.sh
